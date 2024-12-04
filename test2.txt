@@ -1,0 +1,2 @@
+Telefone={ S, D1, D2, P1, P2, P3, P4, { P5, H }, F1, F2, F3, F4, F5, Opt1, Opt2, Opt3, Space }
+
