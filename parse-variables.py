@@ -91,7 +91,6 @@ def remove_after_hash_outside_quotes(input_string: str) -> str:
             return input_string[:index].strip()  # Retorna a string até o índice do '#'
     return input_string.strip()  # Retorna a string inteira se nenhum '#' válido for encontrado
 
-
 def parse_variables(file: TextIO):
     """
     Lê um arquivo e identifica variáveis na forma <nome_da_variavel> = <valor>.
@@ -142,7 +141,6 @@ def validate_value(value: str, file: TextIO):
         if value.isdigit():                                     # caso numero inteiro
             return int(value)
         return value                                            # string sem ""
-
 
 def main():
     # Configurando o parser de argumentos
