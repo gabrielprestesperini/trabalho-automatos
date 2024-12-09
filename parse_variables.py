@@ -20,7 +20,13 @@ def is_balanced(s: str) -> bool:
     matching_pairs = {')': '(', '}': '{'}
     
     # Filtra apenas os caracteres relevantes
-    filtered_s = ''.join(char for char in s if char in "(){}")
+    filtered_s = ''
+    in_quotes = False
+    for char in s:
+        if char == '"':
+            in_quotes = not in_quotes
+        elif char in "(){}" and not in_quotes:
+            filtered_s += char
     
     for char in filtered_s:
         if char in "({":  # Se for um caractere de abertura, adiciona à pilha
@@ -125,7 +131,11 @@ def validate_value(value: str, file: TextIO):
     if(value.startswith("{") or value.startswith("(")):
         finalValue = []
         while not is_balanced(value): 
-            value = value + remove_after_hash_outside_quotes(file.readline().strip())
+            l = file.readline()
+            # valida se o arquivo acabou
+            if not l:
+                raise ValueError(f"Erro: Array não fechado corretamente.")
+            value = value + remove_after_hash_outside_quotes(l.strip())
         
         for inside in extract_children(value):
             # print("inside: ",inside)
@@ -138,8 +148,8 @@ def validate_value(value: str, file: TextIO):
         value.strip()
         if(value.startswith("\"") and value.endswith("\"")):    # caso entre ""
             return value[1:-1]
-        if value.isdigit():                                     # caso numero inteiro
-            return int(value)
+        # if value.isdigit():                                     # caso numero inteiro
+        #     return int(value)
         return value                                            # string sem ""
 
 def main():
