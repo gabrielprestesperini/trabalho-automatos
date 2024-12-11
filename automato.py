@@ -50,7 +50,8 @@ class Automato:
                 if (dest in self.estados):
                     estado_destino = dest
                     self.__validateEstato(estado_destino)
-                    self.__adiciona_transicao(estado_origem, "", estado_destino)
+                    self.__adiciona_transicao(
+                        estado_origem, "", estado_destino)
                 # só simbolo
                 elif (dest in self.alfabeto or dest == "" or (len(dest) == 3 and dest[1] in self.estados and dest[0] == '"' and dest[2] == '"')):
                     if len(dest) == 3:
@@ -61,7 +62,7 @@ class Automato:
                     # adiciona como estado final
                     if not estado_origem in self.estados_finais:
                         self.estados_finais.append(estado_origem)
-                        
+
                     # adiciona como transição final
                     if simbolo:
                         self.__validateSimbolo(simbolo)
@@ -73,11 +74,12 @@ class Automato:
                         simbolo = dest[0]
                         dest = dest[2:]
                     estado_destino = dest
-                    
+
                     # adiciona como transição
                     self.__validateSimbolo(simbolo)
                     self.__validateEstato(estado_destino)
-                    self.__adiciona_transicao(estado_origem, simbolo, estado_destino)
+                    self.__adiciona_transicao(
+                        estado_origem, simbolo, estado_destino)
 
     def __aux_aceita(self, estado: str, cadeia: str) -> bool:
         """
@@ -93,19 +95,19 @@ class Automato:
         if not cadeia:
             return estado in self.estados_finais or estado == ""
 
-        char = cadeia[0]
-        trans = self.transicoes.get((estado, char), [])
+        charTerminal = cadeia[0]
+        trans = self.transicoes.get((estado, charTerminal), [])
         transOpt = self.transicoes.get((estado, ""), [])
-        if(len(trans) > 0 or len(transOpt) > 0):
+        if (len(trans) > 0 or len(transOpt) > 0):
             result = False
             for t in trans:
                 result = result or self.__aux_aceita(t, cadeia[1:])
             for t in transOpt:
                 result = result or self.__aux_aceita(t, cadeia)
             return result
-        else: 
+        else:
             return False
-        
+
     def aceita(self, cadeia: str) -> bool:
         """
         Verifica se uma cadeia é aceita pelo autômato.
@@ -116,8 +118,7 @@ class Automato:
         Returns:
             bool: True se a cadeia for aceita, False caso contrário.
         """
-        return self.__aux_aceita(self.estado_inicial, cadeia)
-
+        return self.__aux_aceita(self.estado_inicial, cadeia.strip())
 
     def __adiciona_transicao(self, estado_origem, simbolo, estado_destino):
         """
@@ -128,7 +129,7 @@ class Automato:
             simbolo (str): Símbolo de transição.
             estado_destino (str): Estado de destino.
         """
-        if((estado_origem, simbolo) in self.transicoes):
+        if ((estado_origem, simbolo) in self.transicoes):
             self.transicoes[(estado_origem, simbolo)].append(estado_destino)
         else:
             self.transicoes[(estado_origem, simbolo)] = [estado_destino]
