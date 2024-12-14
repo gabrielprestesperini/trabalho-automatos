@@ -24,26 +24,40 @@ def open_file(file_path: str) -> TextIO:
 
 # ==================================================================================================
 
-# Verificar se os arquivos de entrada foram fornecidos
-if len(sys.argv) < 3:
-    print("Uso: python script.py <arquivo_glud> <arquivo_words>")
-    sys.exit(1)
+# # Verificar se os arquivos de entrada foram fornecidos
+# if len(sys.argv) < 3:
+#     print("Uso: python script.py <arquivo_glud> <arquivo_words>")
+#     sys.exit(1)
 
-# Arquivo de entrada
-glud_file = sys.argv[1]
-words_file = sys.argv[2]
+# # Arquivo de entrada
+# glud_file = sys.argv[1]
+# words_file = sys.argv[2]
+
+glud_file = "test_afn_afd.txt"
+words_file = "words.txt"
 
 # Abrir o arquivo
 glud = open_file(glud_file)
-words: List[str] = open_file(words_file).read().strip().split(",")
+with open(words_file) as f:
+    words = f.read().strip().replace("\n","").split(",")
+    
 
 # Processar o GLUD
 variables = parse_variables(glud)
 
 # Cria automato
 automato = Automato(variables)
-print('automato.__str__(): ', automato.__str__())
 
-# verifica se as palavras são aceitas pelo automato
+automato.converte_afd()
+
+if automato.determinado:
+    print('O autômato gerado teve de ser determinado. Segue sua nova versão: \n', automato)
+elif automato.removeu_vazios:
+    print('Foram removidos movimentos vazios do autômato. Segue sua nova versão: \n', automato)
+else:
+    print("O autômato convertido da GLC já era AFD. Segue o autônomo correspondente: \n", automato)
+
+print("Testes para cada palavra: \n")
+# Verifica se cada palavra é aceita pelo AFD
 for word in words:
     print(f"{word}:", automato.aceita(word))

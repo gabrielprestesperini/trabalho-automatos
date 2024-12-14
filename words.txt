@@ -1,1 +1,5 @@
-aab, bab, bbbbbbbbbbb, bbbbbbbbbbbbaaa, aaaaaaabbbbbbbbbb
+abababababaaa,
+aaaaaaaaaaaaa,
+aaa,
+bbababbbb,
+bbbabbaaab

@@ -53,8 +53,6 @@ def extract_children(array_text: str) -> list:
     copy_array_text = array_text[1:-1].strip()
     newText = ""
     
-    # print("copy_array_text: ", copy_array_text)
-
     while len(copy_array_text) > 0: 
         
         while(copy_array_text[0] in [',', ' ']):
@@ -69,20 +67,17 @@ def extract_children(array_text: str) -> list:
                 newText += copy_array_text[0:1]
                 copy_array_text = copy_array_text[1:]
             
-            # print("append",newText)
             result.append(
                 newText
             )
 
         else:
             array_splited = copy_array_text.split(",")
-            # print("append",array_splited[0].strip())
             result.append(
                 array_splited[0].strip()
             )
             copy_array_text = ",".join(array_splited[1:])  
     
-    # print("result extract: ", result)
     return result
 
 def remove_after_hash_outside_quotes(input_string: str) -> str:
@@ -106,11 +101,14 @@ def parse_variables(file: TextIO):
     
     Returns:
         dict: Um dicionário com os pares nome/valor das variáveis.
+        Exemplo: {'MinhaG': [['A', 'B', 'C'], ['a', 'b'], 'P', 'A'], 'P': ['A -> aB', 'A -> B', 'B -> bC', 'C -> a']}
     """
+    print("Processando arquivo de entrada...")
+    
     # Regex para identificar variáveis na forma <nome_da_variavel> = <valor>
     variable_pattern = r'^(?P<name>\w+)\s*=\s*(?P<value>.+)$'
     variables = {}
-
+    
     for line in file:
         # Remove comentários fora de aspas
         line = remove_after_hash_outside_quotes(line.strip())
@@ -138,7 +136,6 @@ def validate_value(value: str, file: TextIO):
             value = value + remove_after_hash_outside_quotes(l.strip())
         
         for inside in extract_children(value):
-            # print("inside: ",inside)
             finalValue.append(
                 validate_value(inside.strip(), file)
             )
