@@ -141,7 +141,9 @@ class Automato:
             self.transicoes[(estado_origem, simbolo)] = [estado_destino]
 
     def converte_afd(self):
-
+        """
+        Função que checa se o autômato precisa ser convertido para AFD e chama as funções correspondentes.
+        """
         # Checa se precisa remover movimentos vazios
         for trans in self.transicoes:
             if trans[1]=="":
@@ -162,13 +164,17 @@ class Automato:
         """
         Converte o automato para AFN (Autônomo Finito Não-Determinístico)
         Muda-se apenas a função de transição e os estados finais
-
-        Estados finais: todos os estados que tem transição vazia para o estado final original
-
         """
 
         def fecho_vazio(estado):
-            """Retorna o fecho vazio (estados alcançáveis apenas com movimentos vazios) de um estado."""
+            """
+            Retorna o fecho vazio (estados alcançáveis apenas com movimentos vazios) de um estado.
+
+            Args:
+                estado(str): o estado para calcular o fecho vazio
+             Returns:
+                list: lista de estados do fecho
+            """
             visitados = []
             pilha = [estado]
             while pilha:
@@ -214,6 +220,9 @@ class Automato:
         self.estados_finais = estados_finais_afn
 
     def __converte_afd(self):
+        """
+        Converte o automato para AFD (Autônomo Finito Determinístico)
+        """
         novos_estados = []
         novas_transicoes = {}
         novos_estados_finais = []
@@ -262,7 +271,7 @@ class Automato:
                                for (origem, simbolo), destino in novas_transicoes.items()}
         estados_finais_legiveis = [mapeamento_estados[estado] for estado in novos_estados_finais]
 
-        # Atualizar o autômato com os novos estados
+        # Atualizar o autômato com os novos estados e transições
         self.estados = estados_legiveis
         self.transicoes = transicoes_legiveis
         self.estado_inicial = mapeamento_estados[estado_inicial_deterministico]

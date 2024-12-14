@@ -58,6 +58,7 @@ else:
     print("O autômato convertido da GLC já era AFD. Segue o autônomo correspondente: \n", automato)
 
 print("Testes para cada palavra: \n")
+
 # Verifica se cada palavra é aceita pelo AFD
 for word in words:
     print(f"{word}:", automato.aceita(word))
