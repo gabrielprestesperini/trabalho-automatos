@@ -153,7 +153,7 @@ class Automato:
         # Checa se precisa ser determinado (mais de uma transição com o mesmo simbolo e estado)
         for estado in self.estados:
             for letra in self.alfabeto:
-                if(len(self.transicoes.get((estado,letra)))>1):
+                if(len(self.transicoes.get((estado,letra), []))>1):
                     self.__converte_afd()
                     self.determinado=True
                     break
@@ -162,7 +162,7 @@ class Automato:
 
     def __converte_afn(self):
         """
-        Converte o automato para AFN (Autônomo Finito Não-Determinístico)
+        Converte o automato para AFN (Autômato Finito Não-Determinístico)
         Muda-se apenas a função de transição e os estados finais
         """
 
@@ -221,7 +221,7 @@ class Automato:
 
     def __converte_afd(self):
         """
-        Converte o automato para AFD (Autônomo Finito Determinístico)
+        Converte o automato para AFD (Autômato Finito Determinístico)
         """
         novos_estados = []
         novas_transicoes = {}
