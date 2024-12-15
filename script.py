@@ -35,15 +35,27 @@ words_file = sys.argv[2]
 
 # Abrir o arquivo
 glud = open_file(glud_file)
-words: List[str] = open_file(words_file).read().strip().split(",")
+with open(words_file) as f:
+    words = f.read().strip().replace("\n","").split(",")
+    
 
 # Processar o GLUD
 variables = parse_variables(glud)
 
 # Cria automato
 automato = Automato(variables)
-print('automato.__str__(): ', automato.__str__())
 
-# verifica se as palavras são aceitas pelo automato
+automato.converte_afd()
+
+if automato.determinado:
+    print('O autômato gerado teve de ser determinado. Segue o autômato correspondente: \n', automato)
+elif automato.removeu_vazios:
+    print('Foram removidos movimentos vazios do autômato. Segue o autômato correspondente: \n', automato)
+else:
+    print("O autômato convertido da GLC já era AFD. Segue o autômato gerado: \n", automato)
+
+print("Testes para cada palavra: \n")
+
+# Verifica se cada palavra é aceita pelo AFD
 for word in words:
     print(f"{word}:", automato.aceita(word))
