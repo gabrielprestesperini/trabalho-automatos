@@ -1,6 +1,8 @@
 MinhaG=({A,B,C}, {a,b}, P, A)
 P = {
 A -> aB,
+A -> aC,
+A -> B,
 A -> bC,
 B -> aB,
 B -> bC,

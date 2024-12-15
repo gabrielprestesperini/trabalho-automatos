@@ -281,9 +281,10 @@ class Automato:
         """
         Representação do autômato como string.
         """
-        return (f"Estados: {self.estados}\n"
-                f"Alfabeto: {self.alfabeto}\n"
-                f"Transições: {self.transicoes}\n"
-                f"Estado Inicial: {self.estado_inicial}\n"
-                f"Estados Finais: {self.estados_finais}\n")
+        transicoes_str = "\n".join([f"  ({origem}) -- {simbolo} --> ({f"({destinos[0]})" if destinos[0] in self.estados_finais else destinos[0]})" for (origem, simbolo), destinos in self.transicoes.items()])
+        return (f"Estados: {', '.join(self.estados)}\n"
+            f"Alfabeto: {', '.join(self.alfabeto)}\n"
+            f"Transições:\n{transicoes_str}\n"
+            f"Estado Inicial: {self.estado_inicial}\n"
+            f"Estados Finais: {', '.join(self.estados_finais)}\n")
 

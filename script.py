@@ -20,7 +20,7 @@ def open_file(file_path: str) -> TextIO:
         print(f"Erro: Arquivo '{file_path}' não encontrado.")
     except Exception as e:
         print(f"Erro inesperado: {e}")
-        
+
 
 # ==================================================================================================
 
@@ -36,8 +36,8 @@ words_file = sys.argv[2]
 # Abrir o arquivo
 glud = open_file(glud_file)
 with open(words_file) as f:
-    words = f.read().strip().replace("\n","").split(",")
-    
+    words = f.read().strip().replace("\n", "").split(",")
+
 
 # Processar o GLUD
 variables = parse_variables(glud)
@@ -48,11 +48,13 @@ automato = Automato(variables)
 automato.converte_afd()
 
 if automato.determinado:
-    print('O autômato gerado teve de ser determinado. Segue o autômato correspondente: \n', automato)
+    print('O autômato gerado teve de ser determinado. Segue o autômato correspondente:',
+          automato, sep="\n")
 elif automato.removeu_vazios:
-    print('Foram removidos movimentos vazios do autômato. Segue o autômato correspondente: \n', automato)
+    print('Foram removidos movimentos vazios do autômato. Segue o autômato correspondente:', automato, sep="\n")
 else:
-    print("O autômato convertido da GLC já era AFD. Segue o autômato gerado: \n", automato)
+    print("O autômato convertido da GLC já era AFD. Segue o autômato gerado:",
+          automato, sep="\n")
 
 print("Testes para cada palavra: \n")
 
