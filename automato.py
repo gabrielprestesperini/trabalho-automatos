@@ -63,14 +63,18 @@ class Automato:
                     else:
                         simbolo = dest
 
-                    # adiciona como estado final
-                    if not estado_origem in self.estados_finais:
-                        self.estados_finais.append(estado_origem)
 
                     # adiciona como transição final
                     if simbolo:
                         self.__validateSimbolo(simbolo)
-                        self.__adiciona_transicao(estado_origem, simbolo, "")
+                        self.__adiciona_transicao(estado_origem, simbolo, "FINAL")
+                        if not "FINAL" in self.estados_finais:
+                            self.estados_finais.append("FINAL")
+                    else:
+                        # adiciona como estado final
+                        if not estado_origem in self.estados_finais:
+                            self.estados_finais.append(estado_origem)
+
                 else:
                     simbolo = dest[0]
                     dest = dest[1:]
@@ -99,7 +103,7 @@ class Automato:
 
         # Se a palavra for vazia, retorna se o estado inicial é final
         if not cadeia:
-            return estado in self.estados_finais or estado == ""
+            return estado in self.estados_finais or estado == "FINAL"
 
         charTerminal = cadeia[0]
         trans = self.transicoes.get((estado, charTerminal), [])

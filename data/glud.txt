@@ -1,11 +1,20 @@
-MinhaG=({A,B,C}, {a,b}, P, A)
+Telefone=({S,COM,COM_1,COM_2,COM_3,SEM,SEM_1,SEM_2,NOVE,A,B,C,D,E,F,G,H,TRAÇO}, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "(", ")", -}, P, S)
 P = {
-A -> aB,
-A -> aC,
-A -> B,
-A -> bC,
-B -> aB,
-B -> bC,
-C -> bC,
-C ->
+    S -> (COM | 0SEM | 1SEM | 2SEM | 3SEM | 4SEM | 5SEM | 6SEM | 7SEM | 8SEM | 9SEM,
+    COM -> 0COM_1 | 1COM_1 | 2COM_1 | 3COM_1 | 4COM_1 | 5COM_1 | 6COM_1 | 7COM_1 | 8COM_1 | 9COM_1,
+    COM_1 -> 0COM_2 | 1COM_2 | 2COM_2 | 3COM_2 | 4COM_2 | 5COM_2 | 6COM_2 | 7COM_2 | 8COM_2 | 9COM_2,
+    COM_2 -> 0COM_3 | 1COM_3 | 2COM_3 | 3COM_3 | 4COM_3 | 5COM_3 | 6COM_3 | 7COM_3 | 8COM_3 | 9COM_3,
+    COM_3 -> )NOVE,
+    SEM -> 0SEM_1 | 1SEM_1 | 2SEM_1 | 3SEM_1 | 4SEM_1 | 5SEM_1 | 6SEM_1 | 7SEM_1 | 8SEM_1 | 9SEM_1,
+    SEM_1 -> 0NOVE | 1NOVE | 2NOVE | 3NOVE | 4NOVE | 5NOVE | 6NOVE | 7NOVE | 8NOVE | 9NOVE,
+    NOVE -> 9A,
+    A -> 0B | 1B | 2B | 3B | 4B | 5B | 6B | 7B | 8B | 9B,
+    B -> 0C | 1C | 2C | 3C | 4C | 5C | 6C | 7C | 8C | 9C,
+    C -> 0D | 1D | 2D | 3D | 4D | 5D | 6D | 7D | 8D | 9D,
+    D -> 0TRAÇO | 1TRAÇO | 2TRAÇO | 3TRAÇO | 4TRAÇO | 5TRAÇO | 6TRAÇO | 7TRAÇO | 8TRAÇO | 9TRAÇO,
+    TRAÇO -> -E,
+    E -> 0F | 1F | 2F | 3F | 4F | 5F | 6F | 7F | 8F | 9F,
+    F -> 0G | 1G | 2G | 3G | 4G | 5G | 6G | 7G | 8G | 9G,
+    G -> 0H | 1H | 2H | 3H | 4H | 5H | 6H | 7H | 8H | 9H,
+    H -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9,
 }
