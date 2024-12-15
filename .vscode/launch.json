@@ -11,7 +11,7 @@
             "program": "script.py",
             "console": "integratedTerminal",
             "args": [
-                "glud.txt","words.txt"
+                "data/glud.txt","data/words.txt"
             ]
         }
     ]
