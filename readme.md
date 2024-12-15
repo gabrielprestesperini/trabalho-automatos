@@ -27,6 +27,8 @@ Este repositório contém a implementação de um projeto relacionado ao estudo 
    ```bash
    python script.py <arquivo_glud> <arquivo_palavras>
    ```
+   - `<arquivo_glud>`: Caminho para o arquivo contendo a Gramática Linear Unitária à Direita (GLUD) que define o autômato dentro do padrão definido pelo trabalho.
+   - `<arquivo_palavras>`: Caminho para o arquivo contendo as palavras separadas por vírgula que serão testadas pelo autômato.
 
 ## Funcionalidades
 
