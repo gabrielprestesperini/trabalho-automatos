@@ -1,4 +1,5 @@
 # Trabalho Teórico-Prático - Linguagens Formais e Autômatos (INF05005) - 2024/2
+_João Vitor de Souza e Gabriel Perini_
 
 Este repositório contém a implementação de um projeto da matéria de Linguagens Formais e Autômatos, desenvolvido em Python. O projeto principal está em **`script.py`** e consiste na leitura de uma Gramática Linear Unitária à Direita (GLUD), em um arquivo de texto, e sua conversão para um Autômato Finito Determinístico (AFD), cujos valores são dados como saída. Além disso, o programa dá como saída o resultado o teste de pertencimento à linguagem gerada pela gramática fornecida para cada palavra de um grupo que estão em um diretório de entrada.
 
