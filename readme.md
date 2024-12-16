@@ -39,7 +39,7 @@ Este repositório contém a implementação de um projeto relacionado ao estudo 
 
 ## Exemplo
    ```bash
-   python script.py data/glud.txt data/word.txt
+   python script.py data/glud.txt data/words.txt
    ```
 
    **A GLUD:**
