@@ -11,7 +11,7 @@
             "program": "script.py",
             "console": "integratedTerminal",
             "args": [
-                "data/glud.txt","data/words.txt"
+                "data/test_afn_afd.txt","data/words.txt"
             ]
         }
     ]

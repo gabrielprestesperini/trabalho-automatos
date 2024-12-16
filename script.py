@@ -45,6 +45,7 @@ variables = parse_variables(glud)
 # Cria automato
 automato = Automato(variables)
 
+# converte automato
 automato.converte_afd()
 
 if automato.determinado:

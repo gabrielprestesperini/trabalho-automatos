@@ -69,6 +69,7 @@ class Automato:
                         self.__validateSimbolo(simbolo)
                         self.__adiciona_transicao(estado_origem, simbolo, "FINAL")
                         if not "FINAL" in self.estados_finais:
+                            self.estados.append("FINAL")
                             self.estados_finais.append("FINAL")
                     else:
                         # adiciona como estado final
