@@ -1,19 +1,17 @@
-# Trabalho de Autômatos
+# Trabalho Teórico-Prático - Linguagens Formais e Autômatos (INF05005) - 2024/2
 
-Este repositório contém a implementação de um projeto relacionado ao estudo de autômatos, desenvolvido em Python. Os scripts e dados presentes no repositório têm como objetivo trabalhar com autômatos finitos determinísticos (AFD) e não determinísticos (AFN), realizando operações como análise de variáveis e execução de transições.
+Este repositório contém a implementação de um projeto da matéria de Linguagens Formais e Autômatos, desenvolvido em Python. O projeto principal está em **`script.py`** e consiste na leitura de uma Gramática Linear Unitária à Direita (GLUD), em um arquivo de texto, e sua conversão para um Autômato Finito Determinístico (AFD), cujos valores são dados como saída. Além disso, o programa dá como saída o resultado o teste de pertencimento à linguagem gerada pela gramática fornecida para cada palavra de um grupo que estão em um diretório de entrada.
 
 ## Estrutura do Repositório
 
 ### Diretórios
-
-- **`.vscode/`**: Configurações do editor Visual Studio Code para o projeto.
-- **`data/`**: Diretório destinado aos arquivos de dados utilizados no projeto.
+- **`data/`**: Diretório destinado aos arquivos de entrada do projeto.
 
 ### Arquivos
 
-- **`automato.py`**: Implementação principal para lidar com autômatos, incluindo funções para criar, manipular e simular transições em AFDs e AFNs.
-- **`parse_variables.py`**: Script para processar e interpretar variáveis de entrada que representam autômatos ou estados.
-- **`script.py`**: Arquivo de execução principal, onde os autômatos são processados e as operações específicas são realizadas.
+- **`automato.py`**: Implementação principal para lidar com autômatos, incluindo funções para criar, manipular e simular transições em AFNS.
+- **`parse_variables.py`**: Script para interpretar a GLUD de entrada.
+- **`script.py`**: Arquivo de execução principal, onde as funções auxiliares são chamadas. Aqui é feito a leitura da GLUD, a sua criação de um autônomo e sua determinação.
 
 ## Como Executar
 
@@ -32,14 +30,14 @@ Este repositório contém a implementação de um projeto relacionado ao estudo 
 
 ## Funcionalidades
 
-- **Criação de autômatos:** Suporte a AFD e AFN.
-- **Manipulação de estados e transições:** Definição de estados iniciais, finais e transições entre estados.
-- **Processamento de variáveis:** Interpretação de representações textuais de autômatos.
-- **Execução de autômatos:** Simulação de entradas para verificar aceitação ou rejeição.
+- **Leitura de gramática:** Leitura e interpretação do arquivo de entrada no formato requerido estipulado pelo enunciado do trabalho.
+- **Criação de autômatos:** Autônomos finitos de movimentos vazios são criados a partir da GLUD.
+- **Determinação:** Transformação, caso necessário, do autônomo de entrada para um AFD.
+- **Execução de autômatos:** Simulação de entradas para verificar aceitação ou rejeição, após a devida conversão para AFD.
 
-## Exemplo
+## Exemplo de Execução
    ```bash
-   python script.py data/glud.txt data/word.txt
+   python script.py data/glud.txt data/words.txt
    ```
 
    **A GLUD:**
@@ -69,7 +67,7 @@ Este repositório contém a implementação de um projeto relacionado ao estudo 
 
    ![AFD](afd.png)
 
-   **Palavras para teste:**
+   **Palavras para teste (dentro do arquivo 'data/word.txt'):**
    ```
    (011)91234-5678,
    (123)98765-4321,
