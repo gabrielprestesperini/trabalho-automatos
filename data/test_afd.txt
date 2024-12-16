@@ -3,6 +3,6 @@ P = {
 A -> aA,
 A -> bB,
 B -> aC,
-C -> aD,
-D ->
+C -> D,
+D -> a
 }
